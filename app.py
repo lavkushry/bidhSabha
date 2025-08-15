@@ -137,4 +137,6 @@ if __name__ == "__main__":
 
     # Run in debug mode for development only
     debug_mode = os.environ.get("FLASK_ENV") != "production"
-    app.run(debug=debug_mode, host="0.0.0.0", port=5000)
+    # Use PORT environment variable for Heroku, default to 5000 for local development
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=debug_mode, host="0.0.0.0", port=port)
