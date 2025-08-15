@@ -1,0 +1,405 @@
+/**
+ * @Author: Your name
+ * @Date:   2025-08-15 13:02:26
+ * @Last Modified by:   Your name
+ * @Last Modified time: 2025-08-15 13:12:24
+ */
+/**
+ * @Author: Your name
+ * @Date:   2025-08-15 13:02:26
+ * @Last Modified by:   Your name
+ * @Last Modified time: 2025-08-15 13:12:23
+ */
+/* Custom CSS for BLAS Website - Based on Original Implementation */
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+    background: linear-gradient(180deg, rgba(255,240,221,1) 43%, rgba(249,243,229,1) 65%, rgba(238,245,237,1) 91%) !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: #EC6E15 !important;
+    padding: 0.5rem 0;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.pol_logo {
+    height: 90px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.logo_txt {
+    line-height: 1.2;
+    display: block;
+}
+
+/* Main Content Styles */
+.container {
+    padding-top: 2rem;
+}
+
+/* Page Title */
+h6.text-center {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+}
+
+/* Form Container */
+.bg-light {
+    background-color: #f8f9fa !important;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 0 1rem;
+}
+
+/* Form Styles */
+.form-control {
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.form-control:focus {
+    border-color: #0db4c9;
+    box-shadow: 0 0 0 0.2rem rgba(13, 180, 201, 0.25);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.form-control.valid {
+    border-color: #28a745;
+    background-color: #f8fff9;
+}
+
+.form-control.error {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+}
+
+/* Input Labels */
+label.fw-bold {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+/* Small Helper Text */
+small.text-muted {
+    font-size: 11px;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Date Picker Styles */
+.date_view {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.date_view:focus {
+    background-color: #fff;
+}
+
+/* Button Styles */
+.btn {
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-size: 14px;
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    border-color: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover {
+    background: linear-gradient(135deg, #138496, #117a8b);
+    border-color: #117a8b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #20c997, #1e7e34);
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn i {
+    font-size: 1.1em;
+}
+
+/* Button Grid */
+.d-grid {
+    gap: 0.75rem;
+}
+
+/* Alert Styles */
+.alert {
+    border-radius: 8px;
+    border: none;
+    font-size: 13px;
+    padding: 0.75rem 1rem;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+    color: #0c5460;
+    border-left: 4px solid #17a2b8;
+}
+
+.alert i {
+    font-size: 1.1em;
+}
+
+/* Error Styles */
+input.error,
+select.error,
+textarea.error {
+    border: 1px solid #dc3545 !important;
+    background-color: #fff5f5;
+}
+
+label.error {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 0.25rem;
+    display: block;
+    font-weight: normal;
+}
+
+/* Page Loader */
+.pageloader {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(249, 249, 249, 0.8);
+    backdrop-filter: blur(2px);
+}
+
+.pageloader::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #EC6E15;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Text Styles */
+.text-danger {
+    color: #f30000 !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+/* Help Section */
+.note {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.note strong {
+    font-weight: 600;
+}
+
+/* Footer */
+.container-fluid p {
+    margin: 0;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 767.98px) {
+    .pol_logo {
+        height: 50px;
+    }
+    
+    .smj_logo {
+        display: none !important;
+    }
+    
+    .navbar-nav span {
+        font-size: 11px !important;
+    }
+    
+    .logo_txt.fs-5 {
+        font-size: 14px !important;
+    }
+    
+    h6.text-center {
+        font-size: 0.95rem;
+        padding: 1rem !important;
+    }
+    
+    .container {
+        padding-top: 1rem;
+    }
+    
+    .bg-light {
+        margin: 0 0.5rem;
+    }
+    
+    .note {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .pol_logo {
+        height: 50px;
+    }
+    
+    .smj_logo {
+        display: none !important;
+    }
+    
+    .navbar-nav span {
+        font-size: 11px !important;
+    }
+    
+    .logo_txt.fs-5 {
+        font-size: 12px !important;
+    }
+    
+    h6.text-center {
+        font-size: 0.85rem;
+        padding: 0.5rem !important;
+    }
+    
+    .form-control {
+        font-size: 12px;
+        padding: 0.5rem;
+    }
+    
+    .btn-info {
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+    }
+    
+    .note {
+        font-size: 11px;
+    }
+    
+    .container-fluid p {
+        font-size: 12px;
+    }
+}
+
+/* Animation for form submission */
+.form-submitting {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.form-submitting .btn-info {
+    position: relative;
+}
+
+.form-submitting .btn-info::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Success and Error Messages */
+.alert {
+    border-radius: 6px;
+    margin-top: 1rem;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Custom scrollbar for date picker */
+.ui-datepicker {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 12px !important;
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .note,
+    .container-fluid {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+    }
+    
+    .pageloader {
+        display: none !important;
+    }
+}
